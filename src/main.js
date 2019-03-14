@@ -3,10 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import faseClick from 'fastclick'
+import './assets/styles/reset.css'
+import './assets/styles/border.css'
 
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
+faseClick.attach(document.body)
 new Vue({
   el: '#app',
   router,

@@ -2,7 +2,7 @@
     <div>
         <div class="recommend-title">热销推荐</div>
         <ul>
-            <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+            <li class="item border-bottom" v-for="item of list" :key="item.id">
                 <img class="item-img" :src="item.imgUrl" alt="">
                 <div class="item-info">
                     <p class="item-title">{{ item.title }}</p>
@@ -17,28 +17,8 @@
 <script>
 export default {
   name: 'HomeRecmmend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1508/fe/434ee530e21f1c11bad088e8cc8d5e93.water.jpg_200x200_912ce9f4.jpg',
-        title: '北京野生动物园北京野生动物园',
-        desc: '数百年的宫廷庙宇，至今依旧威严霸气'
-      },
-      {
-        id: '0002',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1508/fe/434ee530e21f1c11bad088e8cc8d5e93.water.jpg_200x200_912ce9f4.jpg',
-        title: '北京野生动物园北京野生动物园',
-        desc: '数百年的宫廷庙宇，至今依旧威严霸气'
-      },
-      {
-        id: '0003',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1508/fe/434ee530e21f1c11bad088e8cc8d5e93.water.jpg_200x200_912ce9f4.jpg',
-        title: '北京野生动物园北京野生动物园',
-        desc: '数百年的宫廷庙宇，至今依旧威严霸气'
-      }
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>

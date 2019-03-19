@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'HomeIcons',
-  date () {
+  data () {
     return {
       iconList: [{
         id: '0001',

@@ -21,7 +21,6 @@
 
 <script>
 import Bscroll from 'better-scroll'
-import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -33,14 +32,6 @@ export default {
       list: [],
       timer: null
     }
-  },
-  methods: {
-    handleCityClick (city) {
-      // this.$store.commit('changeCity', city)
-      this.changeCity(city)
-      this.$router.push('/')
-    },
-    ...mapMutations (['changeCity'])
   },
   // 计算属性 定义是否能匹配 使用在 li 元素的 v-show 中
   computed: {
@@ -62,13 +53,19 @@ export default {
         for (let i in this.cities) {
           this.cities[i].forEach((value) => {
             if (value.spell.indexOf(this.keyword) > -1 ||
-              value.name.indexOf(this.keyword) > -1) {
+                value.name.indexOf(this.keyword) > -1) {
               result.push(value)
             }
           })
         }
         this.list = result
       }, 100)
+    }
+  },
+  methods: {
+    handleCityClick (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
     }
   },
   mounted () {

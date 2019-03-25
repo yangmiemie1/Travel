@@ -1,10 +1,10 @@
 <template>
-    <div class="header">
-        城市选择
-        <router-link to="/">
-            <div class="iconfont header-black">&#xe624;</div>
-        </router-link>
-    </div>
+  <div class="header">
+    城市选择
+    <router-link to="/">
+      <div class="iconfont icon-fanhui"></div>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
     color: #fff
     background: $bgColor
     font-size: .32rem
-    .header-black
+    .icon-fanhui
       position: absolute
       top: 0
       left: 0

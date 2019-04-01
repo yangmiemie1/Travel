@@ -1,35 +1,44 @@
 <template>
-    <div>
-        <router-link tag="div" to="/" class="header-abs" v-show="showAbs">
-            <div class="iconfont header-abs-back">&#xe624;</div>
-        </router-link>
-        <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
-            <router-link to="/">
-                <div class="iconfont header-fixed-black">&#xe624;</div>
-            </router-link>
-            景点详情
-        </div>
+  <div>
+    <router-link
+      tag="div"
+      to="/"
+      class="header-abs"
+      v-show="showAbs"
+    >
+      <div class="iconfont icon-fanhui abs-fanhui"></div>
+    </router-link>
+    <div
+      class="header-fixed"
+      v-show="!showAbs"
+      :style="opacityStyle"
+    >
+      <router-link to="/">
+        <div class="iconfont icon-fanhui fix-fanhui"></div>
+      </router-link>
+      景点详情
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'DetailhHeader',
+  name: 'DetailHeader',
   data () {
     return {
       showAbs: true,
-      opacityStyle: 0
+      opacityStyle: {
+        opacity: 0
+      }
     }
   },
   methods: {
     handleScroll () {
-      const top = document.documentElement.scrollTop
+      const top = (window.parent.document.documentElement.scrollTop || window.parent.document.body.scrollTop) || (document.body.scrollTop + document.documentElement.scrollTop) || (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
-        this.opacityStyle = {
-          opacity: opacity
-        }
+        this.opacityStyle = { opacity: opacity }
         this.showAbs = false
       } else {
         this.showAbs = true
@@ -41,6 +50,9 @@ export default {
   },
   deactivated () {
     window.removeEventListener('scroll', this.handleScroll)
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -51,18 +63,19 @@ export default {
     position: absolute
     left: .2rem
     top: .2rem
-    width: .7rem
-    height: .7rem
-    line-height: .7rem
-    border-radius: .35rem
-    background: rgba(0,0,0,0.4)
-    .header-abs-back
+    width: .8rem
+    height: .8rem
+    line-height: .8rem
+    border-radius: .4rem
+    text-align: center
+    background: rgba(0, 0, 0, .8)
+    .abs-fanhui
+      font-size: .4rem
       color: #fff
-      font-size: .32rem
-      text-align: center
   .header-fixed
+    z-index: 2
     position: fixed
-    top:0
+    top: 0
     left: 0
     right: 0
     height: $headerHeight
@@ -71,7 +84,7 @@ export default {
     color: #fff
     background: $bgColor
     font-size: .32rem
-    .header-fixed-black
+    .fix-fanhui
       position: absolute
       top: 0
       left: 0
